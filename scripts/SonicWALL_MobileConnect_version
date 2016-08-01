@@ -1,0 +1,14 @@
+#!/bin/sh
+
+#
+# by marc.grubb @ analog dot com 20160801
+# Extension Attribute gathers SonicWALL MobileConnect version
+#
+
+if [ -f "/Applications/SonicWALL Mobile Connect.app/Contents/Info.plist" ] ; then
+    VERSION=$( defaults read "/Applications/SonicWALL Mobile Connect.app/Contents/Info.plist" CFBundleShortVersionString )
+else
+    VERSION="Not installed."
+fi
+
+echo "<result>$VERSION</result>"
