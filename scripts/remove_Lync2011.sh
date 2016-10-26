@@ -1,9 +1,7 @@
 #!/bin/sh
-# by marc.grubb @ analog dot com 2016.10.26
 # script to remove items listed on https://support.microsoft.com/en-us/kb/2691870 "How to perform a clean uninstall of Lync for Mac 2011"
 # 10/25/2016-added lines based on script Dave Fisher posted on Slack
 # 10/25/2016-Lucas Vance from jamf support helped with cut commands for userEmail
-# tested in an AD environment
 
 # Pull current logged in user into 'user' variable.
 user=`ls -l /dev/console | cut -d " " -f 4`
@@ -42,7 +40,7 @@ rm -rf /Users/$user/Documents/Microsoft\ User\ Data/Microsoft/Communicator
 rm /Users/$user/Library/Keychains/OC_KeyContainer*
 
 # #7 Delete the following KeyChain entry using security command
-# $user variable is still be in place from earlier
+# $user variable is still in place from earlier
 
 # Pull current logged in user's e-mail address into 'userEmail' variable.
 userEmail=$(dscl . -read /Users/$user EMailAddress | cut -f2 -d":" | cut -f2 -d" ")
